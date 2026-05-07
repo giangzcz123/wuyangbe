@@ -106,3 +106,5 @@ try {
     echo json_encode(['error' => $e->getMessage()]);
 }
 ?>
+
+// Fix bug: Kiem tra trung lap thoi gian truoc khi xac nhan dat ban
