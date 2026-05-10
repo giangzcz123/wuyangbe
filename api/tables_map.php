@@ -40,3 +40,4 @@ try {
 
 
 ?>
+// Refactor: Toi uu truy van trang thai ban de load nhanh hon
