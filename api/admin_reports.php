@@ -61,3 +61,4 @@ switch ($method) {
         break;
 }
 ?>
+// Update: Format lai JSON response cho Chart.js
