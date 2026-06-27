@@ -79,3 +79,10 @@ try {
     ]);
 }
 // Giang update
+//session_start();
+// Fix bug: Chặn khách hàng spam click liên tục tạo nhiều đơn trùng nhau
+//if (isset($_SESSION['last_order_time']) && (time() - $_SESSION['last_order_time'] < 5)) {
+    //echo json_encode(["status" => "error", "message" => "Vui lòng đợi 5 giây trước khi đặt món tiếp theo."]);
+    //exit();
+//}
+//$_SESSION['last_order_time'] = time();
