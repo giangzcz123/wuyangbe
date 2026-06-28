@@ -4,6 +4,7 @@ header("Content-Type: application/json; charset=utf-8");
 header("Access-Control-Allow-Origin: *");
 //
 //
+//
 try {
     // Lấy toàn bộ danh sách danh mục và sản phẩm (không lọc IsAvailable)
     $stmt = $pdo->query("SELECT * FROM Categories ORDER BY CategoryID ASC");
