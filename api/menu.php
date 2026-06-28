@@ -70,3 +70,4 @@ try {
     echo json_encode(['error' => 'Failed to fetch menu'], JSON_UNESCAPED_UNICODE);
 }
 ?>// Giang update
+// Update: Format lai JSON response
