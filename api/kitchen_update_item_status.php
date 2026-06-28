@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
     exit;
 }
-
+//
 $itemId = isset($_GET['id']) ? intval($_GET['id']) : null;
 if (!$itemId) {
     http_response_code(400);
