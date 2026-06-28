@@ -17,7 +17,7 @@ if (!$itemId) {
     echo json_encode(['error' => 'Item ID is required']);
     exit;
 }
-
+//
 $data = json_decode(file_get_contents('php://input'), true);
 $newStatus = $data['ItemStatus'] ?? null;
 if (!in_array($newStatus, ['Waiting', 'Cooking', 'Served'])) {
