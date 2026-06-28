@@ -31,7 +31,7 @@
 //     http_response_code(500);
 //     echo json_encode(['error' => 'Failed to toggle product availability']);
 // }
-
+//
 // header('Content-Type: application/json; charset=utf-8');
 
 require_once '../config/db.php';
