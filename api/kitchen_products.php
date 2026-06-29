@@ -17,7 +17,7 @@ try {
         $cat['Products'] = $stmtProd->fetchAll(PDO::FETCH_ASSOC);
         $result[] = $cat;
     }
-
+//
     echo json_encode($result);
 } catch (PDOException $e) {
     http_response_code(500);
