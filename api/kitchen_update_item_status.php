@@ -25,7 +25,7 @@ if (!in_array($newStatus, ['Waiting', 'Cooking', 'Served'])) {
     echo json_encode(['error' => 'Invalid status']);
     exit;
 }
-
+//
 try {
     $pdo->beginTransaction();
 
