@@ -35,7 +35,7 @@
 // header('Content-Type: application/json; charset=utf-8');
 //
 require_once '../config/db.php';
-
+//
 // --- THÊM CẤU HÌNH CORS Ở ĐÂY ---
 header("Content-Type: application/json; charset=utf-8");
 header("Access-Control-Allow-Origin: *"); 
