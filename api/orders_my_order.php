@@ -62,6 +62,3 @@ try {
     http_response_code(500);
     echo json_encode(['error' => 'Failed to fetch order items']);
 }
-?>
-// Giang update
-// Refactor: Toi uu cau truy van lay chi tiet don

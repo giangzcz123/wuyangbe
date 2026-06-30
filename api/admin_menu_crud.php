@@ -37,7 +37,7 @@ switch ($method) {
         }
 
         try {
-            $stmt = $pdo->prepare('INSERT INTO Products (CategoryID, ProductName, Price, ImageURL, IsAvailable) VALUES (?, ?, ?, ?, ?)');
+            $stmt = $pdo->prepare('INSERT INTO products (CategoryID, ProductName, Price, ImageURL, IsAvailable) VALUES (?, ?, ?, ?, ?)');
             $stmt->execute([
                 $data['CategoryID'],
                 $data['ProductName'],
@@ -62,7 +62,7 @@ switch ($method) {
         }
 
         try {
-            $stmt = $pdo->prepare('UPDATE Products SET CategoryID = ?, ProductName = ?, Price = ?, ImageURL = ?, IsAvailable = ? WHERE ProductID = ?');
+            $stmt = $pdo->prepare('UPDATE products SET CategoryID = ?, ProductName = ?, Price = ?, ImageURL = ?, IsAvailable = ? WHERE ProductID = ?');
             $stmt->execute([
                 $data['CategoryID'] ?? null,
                 $data['ProductName'] ?? null,

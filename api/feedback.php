@@ -34,7 +34,7 @@ try {
         exit;
     }
 
-    $stmt = $pdo->prepare('INSERT INTO Feedbacks (OrderID, Rating, Comment) VALUES (?, ?, ?)');
+    $stmt = $pdo->prepare('INSERT INTO feedbacks (OrderID, Rating, Comment) VALUES (?, ?, ?)');
     $stmt->execute([$orderId, $data['Rating'], $data['Comment'] ?? null]);
 
     echo json_encode(['success' => true, 'FeedbackID' => $pdo->lastInsertId()]);
@@ -42,5 +42,3 @@ try {
     http_response_code(500);
     echo json_encode(['error' => 'Failed to submit feedback', 'message' => $e->getMessage()]);
 }
-?>
-// Giang update
