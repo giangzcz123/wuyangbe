@@ -64,7 +64,7 @@ if (!$productId || !isset($data['IsAvailable'])) {
 
 try {
     // Cập nhật trạng thái IsAvailable trực tiếp từ giá trị FE gửi lên
-    $stmt = $pdo->prepare('UPDATE Products SET IsAvailable = ? WHERE ProductID = ?');
+    $stmt = $pdo->prepare('UPDATE products SET IsAvailable = ? WHERE ProductID = ?');
     $stmt->execute([$isAvailable, $productId]);
 
     echo json_encode([

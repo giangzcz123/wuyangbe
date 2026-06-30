@@ -37,14 +37,14 @@ try {
     $pdo->beginTransaction();
 
     // Tạo đơn hàng mới
-    $stmt = $pdo->prepare('INSERT INTO Orders (TableID, Status) VALUES (?, ?)');
+    $stmt = $pdo->prepare('INSERT INTO orders (TableID, Status) VALUES (?, ?)');
     $stmt->execute([$data['TableID'], 'Pending']);
     $orderId = $pdo->lastInsertId();
 
     // Thêm các món vào OrderItems, bao gồm cả cột Note
     // LƯU Ý: Phải đảm bảo DB bảng OrderItems của bạn đã có cột Note
     $stmt = $pdo->prepare(
-        'INSERT INTO OrderItems (OrderID, ProductID, Quantity, PriceAtTime, Note) 
+        'INSERT INTO orderitems (OrderID, ProductID, Quantity, PriceAtTime, Note) 
          VALUES (?, ?, ?, ?, ?)'
     );
 

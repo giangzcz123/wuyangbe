@@ -40,7 +40,7 @@ try {
 
     // Cập nhật trạng thái đơn hàng thành Paid
     $stmt = $pdo->prepare(
-        'UPDATE Orders SET Status = ?, PaidAt = NOW() WHERE OrderID = ?'
+        'UPDATE orders SET Status = ?, PaidAt = NOW() WHERE OrderID = ?'
     );
     $stmt->execute(['Paid', $orderId]);
 
@@ -58,13 +58,13 @@ try {
         $amountUsed   = $row['Quantity'] * $row['AmountRequired'];
 
         $updateStock = $pdo->prepare(
-            'UPDATE Ingredients SET StockQuantity = StockQuantity - ? WHERE IngredientID = ?'
+            'UPDATE ingredients SET StockQuantity = StockQuantity - ? WHERE IngredientID = ?'
         );
         $updateStock->execute([$amountUsed, $ingredientId]);
     }
 
     // Đóng bàn (về trạng thái trống)
-    $stmt = $pdo->prepare('UPDATE Tables SET Status = 0 WHERE TableID = ?');
+    $stmt = $pdo->prepare('UPDATE tables SET Status = 0 WHERE TableID = ?');
     $stmt->execute([$tableId]);
 
     $pdo->commit();

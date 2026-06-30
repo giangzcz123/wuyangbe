@@ -23,13 +23,13 @@ try {
     // Ví dụ: Cập nhật tất cả Order "Pending" của bàn này thành "Paid"
     // Tùy cấu trúc DB của bạn, có thể bỏ hoặc chỉnh lại đoạn này
     $stmt = $pdo->prepare(
-        'UPDATE Orders SET Status = ? WHERE TableID = ? AND Status = ?'
+        'UPDATE orders SET Status = ? WHERE TableID = ? AND Status = ?'
     );
     $stmt->execute(['Paid', $tableId, 'Pending']);
 
     // Xóa token + chuyển bàn về trạng thái TRỐNG (0)
     $stmt = $pdo->prepare(
-        'UPDATE Tables SET Status = ?, Token = NULL WHERE TableID = ?'
+        'UPDATE tables SET Status = ?, Token = NULL WHERE TableID = ?'
     );
     $stmt->execute([0, $tableId]); // 0 = Trống
 

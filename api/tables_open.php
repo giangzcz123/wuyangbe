@@ -32,16 +32,16 @@ try {
     // Mở bàn và tạo Order mới
     $pdo->beginTransaction();
 
-    $stmt = $pdo->prepare('UPDATE Tables SET Status = ? WHERE TableID = ?');
+    $stmt = $pdo->prepare('UPDATE tables SET Status = ? WHERE TableID = ?');
     $stmt->execute([1, $tableId]);
 
-    $stmt = $pdo->prepare('INSERT INTO Orders (TableID, Status) VALUES (?, ?)');
+    $stmt = $pdo->prepare('INSERT INTO orders (TableID, Status) VALUES (?, ?)');
     $stmt->execute([$tableId, 'Pending']);
     $orderId = $pdo->lastInsertId();
 
     // Tạo token duy nhất cho link gọi món
     $token = bin2hex(random_bytes(16));
-    $stmt = $pdo->prepare('UPDATE Tables SET Token = ? WHERE TableID = ?');
+    $stmt = $pdo->prepare('UPDATE tables SET Token = ? WHERE TableID = ?');
     $stmt->execute([$token, $tableId]);
 
     $pdo->commit();

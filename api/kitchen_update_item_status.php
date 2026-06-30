@@ -41,7 +41,7 @@ try {
     $currentStatus = $orderItem['ItemStatus'];
 
     // Cập nhật trạng thái mới
-    $stmtUpdate = $pdo->prepare('UPDATE OrderItems SET ItemStatus = ? WHERE OrderItemID = ?');
+    $stmtUpdate = $pdo->prepare('UPDATE orderitems SET ItemStatus = ? WHERE OrderItemID = ?');
     $stmtUpdate->execute([$newStatus, $itemId]);
 
     // Nếu trạng thái mới là 'Served' và trước đó chưa phải 'Served', tiến hành trừ kho
@@ -56,7 +56,7 @@ try {
 
         // Trừ số lượng tồn kho theo số lượng món * định mức
         if (!empty($recipes)) {
-            $stmtDeduct = $pdo->prepare('UPDATE Ingredients SET StockQuantity = StockQuantity - ? WHERE IngredientID = ?');
+            $stmtDeduct = $pdo->prepare('UPDATE ingredients SET StockQuantity = StockQuantity - ? WHERE IngredientID = ?');
             foreach ($recipes as $recipe) {
                 $totalToDeduct = $recipe['AmountRequired'] * $quantity;
                 $stmtDeduct->execute([$totalToDeduct, $recipe['IngredientID']]);
