@@ -20,3 +20,5 @@ try {
     echo json_encode(['error' => 'Failed to fetch categories'], JSON_UNESCAPED_UNICODE);
 }
 ?>
+
+
