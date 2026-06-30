@@ -119,3 +119,5 @@ switch ($method) {
         echo json_encode(['error' => 'Method not allowed'], JSON_UNESCAPED_UNICODE);
         break;
 }
+
+
