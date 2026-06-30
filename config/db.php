@@ -18,11 +18,11 @@ header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-W
 header('Content-Type: application/json; charset=utf-8');
 
 // 2. Thông số kết nối (XAMPP Localhost)
-$host = '127.0.0.1';
+$host = 'db';
 $port = 3306;
 $dbname = 'restaurantqrmanagement';
 $username = 'root';
-$password = '';
+$password = 'root';
 $charset = 'utf8mb4';
 
 // 3. Chuỗi DSN
