@@ -18,8 +18,8 @@ switch ($method) {
         // Lấy danh sách định mức
         try {
             $stmt = $pdo->prepare('SELECT r.ProductID, p.ProductName, r.IngredientID, i.IngredientName, r.AmountRequired
-                                   FROM Recipes r
-                                   JOIN Products p ON r.ProductID = p.ProductID
+                                   FROM recipes r
+                                   JOIN products p ON r.ProductID = p.ProductID
                                    JOIN Ingredients i ON r.IngredientID = i.IngredientID');
             $stmt->execute();
             $recipes = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -63,7 +63,7 @@ switch ($method) {
         }
 
         try {
-            $stmt = $pdo->prepare('DELETE FROM Recipes WHERE ProductID = ? AND IngredientID = ?');
+            $stmt = $pdo->prepare('DELETE FROM recipes WHERE ProductID = ? AND IngredientID = ?');
             $stmt->execute([$data['ProductID'], $data['IngredientID']]);
             echo json_encode(['success' => true]);
         } catch (PDOException $e) {

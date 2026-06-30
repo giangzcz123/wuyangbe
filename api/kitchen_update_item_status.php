@@ -30,7 +30,7 @@ try {
     $pdo->beginTransaction();
 
     // Lấy thông tin trạng thái hiện tại, ProductID và Quantity của OrderItem
-    $stmt = $pdo->prepare('SELECT ItemStatus, ProductID, Quantity FROM OrderItems WHERE OrderItemID = ?');
+    $stmt = $pdo->prepare('SELECT ItemStatus, ProductID, Quantity FROM orderitems WHERE OrderItemID = ?');
     $stmt->execute([$itemId]);
     $orderItem = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -50,7 +50,7 @@ try {
         $quantity = $orderItem['Quantity'];
 
         // Lấy công thức định mức (Recipes) cho sản phẩm này
-        $stmtRecipe = $pdo->prepare('SELECT IngredientID, AmountRequired FROM Recipes WHERE ProductID = ?');
+        $stmtRecipe = $pdo->prepare('SELECT IngredientID, AmountRequired FROM recipes WHERE ProductID = ?');
         $stmtRecipe->execute([$productId]);
         $recipes = $stmtRecipe->fetchAll(PDO::FETCH_ASSOC);
 

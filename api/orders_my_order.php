@@ -11,9 +11,9 @@
 
 // try {
 //     $stmt = $pdo->prepare('SELECT oi.OrderItemID, oi.ProductID, p.ProductName, oi.Quantity, oi.ItemStatus, oi.CreatedAt
-//                            FROM Orders o
-//                            JOIN OrderItems oi ON o.OrderID = oi.OrderID
-//                            JOIN Products p ON oi.ProductID = p.ProductID
+//                            FROM orders o
+//                            JOIN orderitems oi ON o.OrderID = oi.OrderID
+//                            JOIN products p ON oi.ProductID = p.ProductID
 //                            WHERE o.TableID = ? AND o.Status = ?');
 //     $stmt->execute([$tableId, 'Pending']);
 
@@ -38,7 +38,7 @@ if (!$tableId || !$token) {
 
 try {
     // Xác nhận token khớp với bàn hiện tại (tránh lấy đơn cũ từ phiên trước)
-    $stmtCheck = $pdo->prepare('SELECT TableID FROM Tables WHERE TableID = ? AND Token = ?');
+    $stmtCheck = $pdo->prepare('SELECT TableID FROM tables WHERE TableID = ? AND Token = ?');
     $stmtCheck->execute([$tableId, $token]);
     if (!$stmtCheck->fetch()) {
         echo json_encode([]); // Token không hợp lệ → trả về rỗng
@@ -49,9 +49,9 @@ try {
     $stmt = $pdo->prepare(
         'SELECT oi.OrderItemID, oi.ProductID, p.ProductName,
                 oi.Quantity, oi.PriceAtTime, oi.Note, oi.ItemStatus, oi.CreatedAt
-         FROM Orders o
-         JOIN OrderItems oi ON o.OrderID = oi.OrderID
-         JOIN Products p    ON oi.ProductID = p.ProductID
+         FROM orders o
+         JOIN orderitems oi ON o.OrderID = oi.OrderID
+         JOIN products p    ON oi.ProductID = p.ProductID
          WHERE o.TableID = ? AND o.Status = ?
          ORDER BY oi.CreatedAt ASC'
     );

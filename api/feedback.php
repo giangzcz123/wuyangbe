@@ -21,7 +21,7 @@ try {
     // Nếu Frontend không truyền OrderID thì tự tra OrderID mới nhất theo TableID
     if (!$orderId && isset($data['TableID'])) {
         $stmt = $pdo->prepare(
-            'SELECT OrderID FROM Orders WHERE TableID = ? ORDER BY CreatedAt DESC LIMIT 1'
+            'SELECT OrderID FROM orders WHERE TableID = ? ORDER BY CreatedAt DESC LIMIT 1'
         );
         $stmt->execute([$data['TableID']]);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);

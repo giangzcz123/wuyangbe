@@ -15,7 +15,7 @@ try {
     switch ($method) {
         case 'GET':
             // Lấy danh sách bàn
-            $stmt = $pdo->query("SELECT * FROM Tables ORDER BY TableID ASC");
+            $stmt = $pdo->query("SELECT * FROM tables ORDER BY TableID ASC");
             echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
             break;
 
@@ -48,13 +48,13 @@ try {
                 throw new Exception("Thiếu ID bàn để xóa");
             }
             // Kiểm tra xem bàn có đang có Order Pending không
-            $stmt = $pdo->prepare("SELECT COUNT(*) FROM Orders WHERE TableID = ? AND Status = 'Pending'");
+            $stmt = $pdo->prepare("SELECT COUNT(*) FROM orders WHERE TableID = ? AND Status = 'Pending'");
             $stmt->execute([$data['TableID']]);
             if ($stmt->fetchColumn() > 0) {
                 throw new Exception("Không thể xóa bàn đang có đơn hàng chưa thanh toán");
             }
 
-            $stmt = $pdo->prepare("DELETE FROM Tables WHERE TableID = ?");
+            $stmt = $pdo->prepare("DELETE FROM tables WHERE TableID = ?");
             $stmt->execute([$data['TableID']]);
             echo json_encode(['success' => true]);
             break;

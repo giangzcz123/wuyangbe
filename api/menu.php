@@ -4,7 +4,7 @@
 // header('Content-Type: application/json; charset=utf-8');
 
 // try {
-//     $stmt = $pdo->prepare('SELECT c.CategoryID, c.CategoryName, p.ProductName, p.Price, p.ImageURL FROM Categories c JOIN Products p ON c.CategoryID = p.CategoryID WHERE p.IsAvailable = 1 ORDER BY c.DisplayOrder, p.ProductName');
+//     $stmt = $pdo->prepare('SELECT c.CategoryID, c.CategoryName, p.ProductName, p.Price, p.ImageURL FROM categories c JOIN products p ON c.CategoryID = p.CategoryID WHERE p.IsAvailable = 1 ORDER BY c.DisplayOrder, p.ProductName');
 //     $stmt->execute();
 
 //     $menu = [];
@@ -39,8 +39,8 @@ try {
             p.ProductName,
             p.Price,
             p.ImageURL
-         FROM Categories c
-         JOIN Products p ON c.CategoryID = p.CategoryID
+         FROM categories c
+         JOIN products p ON c.CategoryID = p.CategoryID
          WHERE p.IsAvailable = 1
          ORDER BY c.DisplayOrder, p.ProductName'
     );

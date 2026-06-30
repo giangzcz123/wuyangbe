@@ -8,7 +8,7 @@ $role = 'Admin';
 
 try {
     // Delete if exists
-    $stmt = $pdo->prepare("DELETE FROM Users WHERE Username = ?");
+    $stmt = $pdo->prepare("DELETE FROM users WHERE Username = ?");
     $stmt->execute([$username]);
 
     $stmt = $pdo->prepare("INSERT INTO Users (Username, PasswordHash, FullName, UserRole) VALUES (?, ?, ?, ?)");

@@ -8,10 +8,10 @@ try {
         "SELECT oi.OrderItemID, oi.ProductID, p.ProductName, 
                 oi.Quantity, oi.PriceAtTime, oi.Note, oi.ItemStatus,
                 o.TableID, t.TableNumber
-         FROM OrderItems oi
+         FROM orderitems oi
          JOIN Orders o ON oi.OrderID = o.OrderID
-         JOIN Products p ON oi.ProductID = p.ProductID
-         LEFT JOIN Tables t ON o.TableID = t.TableID
+         JOIN products p ON oi.ProductID = p.ProductID
+         LEFT JOIN tables t ON o.TableID = t.TableID
          WHERE oi.ItemStatus IN ('Waiting', 'Cooking') AND o.Status = 'Pending'
          ORDER BY oi.CreatedAt ASC"
     );

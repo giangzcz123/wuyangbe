@@ -11,7 +11,7 @@
 
 // try {
 //     // Lấy trạng thái hiện tại của sản phẩm
-//     $stmt = $pdo->prepare('SELECT IsAvailable FROM Products WHERE ProductID = ?');
+//     $stmt = $pdo->prepare('SELECT IsAvailable FROM products WHERE ProductID = ?');
 //     $stmt->execute([$productId]);
 //     $product = $stmt->fetch(PDO::FETCH_ASSOC);
 

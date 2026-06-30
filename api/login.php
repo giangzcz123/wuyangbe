@@ -25,7 +25,7 @@ if (!isset($data['UserName']) || !isset($data['PassWord'])) {
 }
 
 try {
-    $stmt = $pdo->prepare('SELECT UserID, Username, PasswordHash, FullName, UserRole FROM Users WHERE Username = ?');
+    $stmt = $pdo->prepare('SELECT UserID, Username, PasswordHash, FullName, UserRole FROM users WHERE Username = ?');
     $stmt->execute([$data['UserName']]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 

@@ -27,7 +27,7 @@ try {
 
     // Lấy OrderID đang Pending của bàn
     $stmt = $pdo->prepare(
-        'SELECT OrderID FROM Orders WHERE TableID = ? AND Status = ? ORDER BY CreatedAt DESC LIMIT 1'
+        'SELECT OrderID FROM orders WHERE TableID = ? AND Status = ? ORDER BY CreatedAt DESC LIMIT 1'
     );
     $stmt->execute([$tableId, 'Pending']);
     $order = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -47,7 +47,7 @@ try {
     // Trừ nguyên liệu trong kho dựa trên Recipes
     $stmt = $pdo->prepare(
         'SELECT oi.ProductID, oi.Quantity, r.IngredientID, r.AmountRequired
-         FROM OrderItems oi
+         FROM orderitems oi
          JOIN Recipes r ON oi.ProductID = r.ProductID
          WHERE oi.OrderID = ?'
     );

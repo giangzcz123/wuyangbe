@@ -3,7 +3,7 @@ require_once '../config/db.php';
 header('Content-Type: application/json; charset=utf-8');
 
 try {
-    $stmt = $pdo->prepare('SELECT CategoryID, CategoryName FROM Categories ORDER BY DisplayOrder');
+    $stmt = $pdo->prepare('SELECT CategoryID, CategoryName FROM categories ORDER BY DisplayOrder');
     $stmt->execute();
 
     $categories = [];

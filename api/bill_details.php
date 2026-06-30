@@ -17,8 +17,8 @@ try {
     $sql = "SELECT oi.OrderItemID, oi.OrderID, oi.ProductID, oi.Quantity, 
                    IFNULL(oi.PriceAtTime, p.Price) as PriceAtTime, 
                    p.ProductName, p.Price, oi.Note, oi.ItemStatus
-            FROM OrderItems oi
-            JOIN Products p ON oi.ProductID = p.ProductID
+            FROM orderitems oi
+            JOIN products p ON oi.ProductID = p.ProductID
             WHERE oi.OrderID = ?";
             
     $stmt = $pdo->prepare($sql);

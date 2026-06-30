@@ -9,12 +9,12 @@ try {
     $sql = "SELECT o.OrderID, o.TableID, t.TableNumber, o.Status, o.CreatedAt,
             (
                 SELECT IFNULL(SUM(oi.Quantity * IFNULL(oi.PriceAtTime, p.Price)), 0)
-                FROM OrderItems oi
-                JOIN Products p ON oi.ProductID = p.ProductID
+                FROM orderitems oi
+                JOIN products p ON oi.ProductID = p.ProductID
                 WHERE oi.OrderID = o.OrderID
             ) as TotalAmount
-            FROM Orders o
-            LEFT JOIN Tables t ON o.TableID = t.TableID
+            FROM orders o
+            LEFT JOIN tables t ON o.TableID = t.TableID
             WHERE o.Status IN ('Completed', 'Pending', 'Paid') 
             ORDER BY o.CreatedAt DESC";
             

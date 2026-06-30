@@ -15,7 +15,7 @@ try {
     $stmt = $pdo->query('
         SELECT f.FeedbackID, f.OrderID, f.Rating, f.Comment, f.CreatedAt,
                o.TableID
-        FROM Feedbacks f
+        FROM feedbacks f
         LEFT JOIN Orders o ON f.OrderID = o.OrderID
         ORDER BY f.CreatedAt DESC
     ');

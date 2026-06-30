@@ -17,7 +17,7 @@ switch ($method) {
     case 'GET':
         // Lấy báo cáo tồn kho
         try {
-            $stmt = $pdo->prepare('SELECT * FROM Ingredients');
+            $stmt = $pdo->prepare('SELECT * FROM ingredients');
             $stmt->execute();
             $inventory = $stmt->fetchAll(PDO::FETCH_ASSOC);
             echo json_encode($inventory);

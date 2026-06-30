@@ -2,7 +2,7 @@
 // require_once '../config/db.php';
 
 // try {
-//     $stmt = $pdo->prepare('SELECT TableID, TableNumber, Status FROM Tables');
+//     $stmt = $pdo->prepare('SELECT TableID, TableNumber, Status FROM tables');
 //     $stmt->execute();
 
 //     $tables = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -21,12 +21,12 @@ try {
     $sql = "SELECT t.*, 
             (
                 SELECT IFNULL(SUM(oi.Quantity * oi.PriceAtTime), 0)
-                FROM Orders o
-                JOIN OrderItems oi ON o.OrderID = oi.OrderID
+                FROM orders o
+                JOIN orderitems oi ON o.OrderID = oi.OrderID
                 WHERE o.TableID = t.TableID 
                   AND o.Status = 'Pending'
             ) AS TotalAmount
-            FROM Tables t
+            FROM tables t
             ORDER BY t.TableID ASC";
             
     $stmt = $pdo->query($sql);

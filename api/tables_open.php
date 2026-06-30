@@ -13,7 +13,7 @@ if (!$tableId) {
 
 try {
     // Kiểm tra xem bàn đã được mở chưa
-    $stmt = $pdo->prepare('SELECT Status FROM Tables WHERE TableID = ?');
+    $stmt = $pdo->prepare('SELECT Status FROM tables WHERE TableID = ?');
     $stmt->execute([$tableId]);
     $table = $stmt->fetch(PDO::FETCH_ASSOC);
 

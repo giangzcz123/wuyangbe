@@ -17,7 +17,7 @@ switch ($method) {
     case 'GET':
         // Lấy danh sách món ăn
         try {
-            $stmt = $pdo->prepare('SELECT * FROM Products');
+            $stmt = $pdo->prepare('SELECT * FROM products');
             $stmt->execute();
             $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
             echo json_encode($products);
@@ -88,7 +88,7 @@ switch ($method) {
         }
 
         try {
-            $stmt = $pdo->prepare('DELETE FROM Products WHERE ProductID = ?');
+            $stmt = $pdo->prepare('DELETE FROM products WHERE ProductID = ?');
             $stmt->execute([$data['ProductID']]);
             echo json_encode(['success' => true]);
         } catch (PDOException $e) {

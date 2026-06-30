@@ -20,7 +20,7 @@ $input = json_decode(file_get_contents('php://input'), true);
 switch ($method) {
     case 'GET':
         try {
-            $stmt = $pdo->prepare('SELECT UserID, Username, FullName, UserRole FROM Users');
+            $stmt = $pdo->prepare('SELECT UserID, Username, FullName, UserRole FROM users');
             $stmt->execute();
             $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
             echo json_encode($users, JSON_UNESCAPED_UNICODE);
@@ -105,7 +105,7 @@ switch ($method) {
         }
 
         try {
-            $stmt = $pdo->prepare('DELETE FROM Users WHERE UserID = ?');
+            $stmt = $pdo->prepare('DELETE FROM users WHERE UserID = ?');
             $stmt->execute([$id]);
             echo json_encode(['success' => true], JSON_UNESCAPED_UNICODE);
         } catch (PDOException $e) {

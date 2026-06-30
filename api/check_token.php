@@ -21,7 +21,7 @@ if (!$tableId || !$token) {
 
 try {
     // Tìm bàn dựa trên ID
-    $stmt = $pdo->prepare('SELECT Token, Status FROM Tables WHERE TableID = ?');
+    $stmt = $pdo->prepare('SELECT Token, Status FROM tables WHERE TableID = ?');
     $stmt->execute([$tableId]);
     $table = $stmt->fetch(PDO::FETCH_ASSOC);
 

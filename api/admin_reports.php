@@ -27,9 +27,9 @@ switch ($method) {
         try {
             $stmt = $pdo->prepare('
                 SELECT DATE(o.CreatedAt) as Date, COALESCE(SUM(i.Quantity * p.Price), 0) as Revenue
-                FROM Orders o
-                LEFT JOIN OrderItems i ON o.OrderID = i.OrderID
-                LEFT JOIN Products p ON i.ProductID = p.ProductID
+                FROM orders o
+                LEFT JOIN orderitems i ON o.OrderID = i.OrderID
+                LEFT JOIN products p ON i.ProductID = p.ProductID
                 WHERE DATE(o.CreatedAt) BETWEEN ? AND ? AND o.Status = ?
                 GROUP BY DATE(o.CreatedAt)
             ');
@@ -45,7 +45,7 @@ switch ($method) {
     case 'POST':
         // Thống kê điểm đánh giá sao trung bình
         try {
-            $stmt = $pdo->prepare('SELECT AVG(Rating) as AverageRating FROM Feedbacks');
+            $stmt = $pdo->prepare('SELECT AVG(Rating) as AverageRating FROM feedbacks');
             $stmt->execute();
             $averageRating = $stmt->fetch(PDO::FETCH_ASSOC);
             echo json_encode($averageRating);

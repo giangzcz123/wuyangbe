@@ -23,8 +23,8 @@ if (!$tableId) {
 try {
     $stmt = $pdo->prepare(
         'SELECT oi.Quantity, oi.PriceAtTime
-         FROM Orders o
-         JOIN OrderItems oi ON o.OrderID = oi.OrderID
+         FROM orders o
+         JOIN orderitems oi ON o.OrderID = oi.OrderID
          WHERE o.TableID = ? AND o.Status = ?'
     );
     $stmt->execute([$tableId, 'Pending']);

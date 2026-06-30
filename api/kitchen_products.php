@@ -5,12 +5,12 @@ header("Access-Control-Allow-Origin: *");
 
 try {
     // Lấy toàn bộ danh sách danh mục và sản phẩm (không lọc IsAvailable)
-    $stmt = $pdo->query("SELECT * FROM Categories ORDER BY CategoryID ASC");
+    $stmt = $pdo->query("SELECT * FROM categories ORDER BY CategoryID ASC");
     $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     $result = [];
     foreach ($categories as $cat) {
-        $stmtProd = $pdo->prepare("SELECT * FROM Products WHERE CategoryID = ?");
+        $stmtProd = $pdo->prepare("SELECT * FROM products WHERE CategoryID = ?");
         $stmtProd->execute([$cat['CategoryID']]);
         $cat['Products'] = $stmtProd->fetchAll(PDO::FETCH_ASSOC);
         $result[] = $cat;

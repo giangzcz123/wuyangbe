@@ -1,6 +1,6 @@
 <?php
 require_once '../config/db.php';
-$stmt = $pdo->prepare('SELECT * FROM Users WHERE UserRole = "Admin" LIMIT 1');
+$stmt = $pdo->prepare('SELECT * FROM users WHERE UserRole = "Admin" LIMIT 1');
 $stmt->execute();
 $admin = $stmt->fetch();
 if (!$admin) {
