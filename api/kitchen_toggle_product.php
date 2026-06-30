@@ -77,5 +77,5 @@ try {
     echo json_encode(['error' => 'Failed to toggle product availability', 'details' => $e->getMessage()]);
 }
 
-
+//done
 ?>
