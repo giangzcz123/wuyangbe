@@ -48,7 +48,7 @@ if (move_uploaded_file($file["tmp_name"], $target_file)) {
     // Assuming the public root is http://localhost:8088/hadilaoPHP/public/
     $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http";
     $host = $_SERVER['HTTP_HOST'];
-    $public_url = $protocol . "://" . $host . "/wuyang_be/public/uploads/products/" . $newfilename;
+    $public_url = $protocol . "://" . $host . "/public/uploads/products/" . $newfilename;
     
     echo json_encode(["success" => true, "url" => $public_url]);
 } else {
