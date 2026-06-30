@@ -37,7 +37,7 @@ try {
     if (!$orderItem) {
         throw new Exception("OrderItem not found");
     }
-
+//done
     $currentStatus = $orderItem['ItemStatus'];
 
     // Cập nhật trạng thái mới
