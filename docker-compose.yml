@@ -7,6 +7,8 @@ services:
       - "80:80"
     volumes:
       - .:/var/www/html
+      # Volume riêng cho uploads - ảnh không bị mất khi git pull
+      - uploads_data:/var/www/html/public/uploads
     depends_on:
       - db
     restart: always
@@ -26,3 +28,4 @@ services:
 
 volumes:
   db_data:
+  uploads_data:

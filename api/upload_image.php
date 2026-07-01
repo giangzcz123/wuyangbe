@@ -43,11 +43,32 @@ $newfilename = uniqid() . '.' . $imageFileType;
 $target_file = $target_dir . $newfilename;
 
 if (move_uploaded_file($file["tmp_name"], $target_file)) {
-    // Return the URL relative to the API or absolute if needed
-    // In this case, let's return a URL that the React app can use
-    // Assuming the public root is http://localhost:8088/hadilaoPHP/public/
     $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http";
+
+    // Lấy IP thực của request (tránh trường hợp HTTP_HOST = 'localhost' trong Docker)
     $host = $_SERVER['HTTP_HOST'];
+    // Nếu host là localhost hoặc tên container, dùng SERVER_ADDR
+    if ($host === 'localhost' || strpos($host, '127.') === 0 || !filter_var(explode(':', $host)[0], FILTER_VALIDATE_IP)) {
+        $serverIp = $_SERVER['SERVER_ADDR'] ?? $host;
+        // SERVER_ADDR trong Docker có thể là IP container, thử HTTP_X_FORWARDED_HOST trước
+        if (isset($_SERVER['HTTP_X_FORWARDED_HOST'])) {
+            $host = $_SERVER['HTTP_X_FORWARDED_HOST'];
+        } elseif (isset($_SERVER['HTTP_X_REAL_IP'])) {
+            $host = $_SERVER['HTTP_X_REAL_IP'];
+        } else {
+            // Lấy IP từ header Origin của request (FE gọi từ IP nào thì dùng IP đó)
+            if (isset($_SERVER['HTTP_ORIGIN'])) {
+                $originParts = parse_url($_SERVER['HTTP_ORIGIN']);
+                $originHost  = $originParts['host'] ?? '';
+                $originPort  = isset($originParts['port']) ? ':' . $originParts['port'] : '';
+                if ($originHost && $originHost !== 'localhost') {
+                    // Dùng IP của FE nhưng với port 80 (BE port)
+                    $host = $originHost;
+                }
+            }
+        }
+    }
+
     $public_url = $protocol . "://" . $host . "/public/uploads/products/" . $newfilename;
     
     echo json_encode(["success" => true, "url" => $public_url]);
