@@ -2,7 +2,7 @@
 require_once 'config/db.php';
 
 // ===== IP hiện tại của máy chủ BE =====
-$CORRECT_IP = '192.168.2.18';
+$CORRECT_IP = '172.20.10.4';
 
 try {
     $stmt = $pdo->query("SELECT ProductID, ImageURL FROM products WHERE ImageURL IS NOT NULL AND ImageURL != ''");

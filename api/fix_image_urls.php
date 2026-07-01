@@ -4,7 +4,7 @@
 
 require_once '../config/db.php';
 
-$CORRECT_IP = '192.168.2.18';
+$CORRECT_IP = '172.20.10.4';
 
 header('Content-Type: text/plain; charset=utf-8');
 
