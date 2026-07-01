@@ -1,6 +1,6 @@
 <?php
 // Script chạy 1 lần để fix toàn bộ ImageURL trong DB
-// Truy cập: http://192.168.2.18/api/fix_image_urls.php
+// Truy cập: http://172.20.10.4/api/fix_image_urls.php
 
 require_once '../config/db.php';
 
