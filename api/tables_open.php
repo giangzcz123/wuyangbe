@@ -47,8 +47,8 @@ try {
     $pdo->commit();
 
     // $orderLink = "http://localhost:8088/hadilaoPHP/api/order.php?table_id={$tableId}&token={$token}";
-    $orderLink = "http://localhost:3000/customer-menu?table_id={$tableId}&token={$token}";
-    
+
+    $orderLink = "http://localhost:5173/customer-menu?table_id={$tableId}&token={$token}";
     echo json_encode(['success' => true, 'OrderID' => $orderId, 'OrderLink' => $orderLink], JSON_UNESCAPED_UNICODE);
 } catch (Exception $e) {
     if ($pdo && $pdo->inTransaction()) {
