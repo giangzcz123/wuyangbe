@@ -52,7 +52,8 @@ try {
     // $orderLink = "http://localhost:5173/customer-menu?table_id={$tableId}&token={$token}";
     
     // ✅ ĐANG DÙNG: Demo tại lớp (điện thoại cùng Wi-Fi quét được)
-    $orderLink = "http://192.168.2.18:5173/customer-menu?table_id={$tableId}&token={$token}";
+    // FE chạy trên Windows (192.168.2.3), BE chạy trên Ubuntu (192.168.2.18)
+    $orderLink = "http://192.168.2.3:5173/customer-menu?table_id={$tableId}&token={$token}";
     
     echo json_encode(['success' => true, 'OrderID' => $orderId, 'OrderLink' => $orderLink], JSON_UNESCAPED_UNICODE);
 } catch (Exception $e) {
